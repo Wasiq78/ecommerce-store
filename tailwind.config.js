@@ -9,7 +9,8 @@ export default {
      },
      fontFamily: {
       blinker: 'Blinker, sans-serif'
-     }
+     },
+    
     },
   },
   plugins: [],

@@ -59,7 +59,7 @@ import MatLamp2 from "../src/img/products/otherProducts/mat2.webp";
 import Comfy1 from "../src/img/products/otherProducts/comfy1.webp";
 import Comfy2 from "../src/img/products/otherProducts/comfy2.webp";
 
-[
+ const productsData = [
   {
     id: 1,
     category: "chair",
@@ -321,3 +321,5 @@ import Comfy2 from "../src/img/products/otherProducts/comfy2.webp";
     size: "10cm x 5cm",
   },
 ];
+
+export default productsData
