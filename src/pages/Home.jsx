@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Hero from '../components/Hero'
 function Home() {
   return (
-    <div className='h-[200vh] mt-44'>Home</div>
+    <>
+    <Hero />
+    </>
   )
 }
 
