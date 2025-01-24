@@ -18,9 +18,12 @@ body {
   position: relative;
 }
 
-/* html {
-  font-size: 62.5%;
-} */
+
+img{
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
 
 /* global */
 .container {

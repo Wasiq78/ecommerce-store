@@ -1,10 +1,16 @@
 import React from "react";
-
+import Navbar from "./components/Navbar";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
 function App() {
   return (
     <>
-<h1 className=" text-3xl bg-blue-500 font-bold container">App Page</h1>
-<p className="text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi asperiores eos aspernatur debitis? Sit, rerum, libero reprehenderit numquam tempora dolor, eligendi a ullam expedita tempore vel.</p>
+     <Navbar />
+     <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/products" element={<Products />} />
+     </Routes>
     </>
   );
 }
