@@ -14,7 +14,7 @@ function NewArrivals() {
         </div>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8'>
         {newProducts.map(product => (
-                <div key={product.description} className='outline outline-2 outline-gray-300 px-4 pb-2 transition-all duration-300 ease-in hover:outline-gray-700 hover:cursor-pointer'>
+                <div key={product.id} className='outline outline-2 outline-gray-300 px-4 pb-2 transition-all duration-300 ease-in hover:outline-gray-700 hover:cursor-pointer'>
                     <img src={product.img} />
                     <p className='text-lg '>{product.description}</p>
                     <p className='text-xl font-bold'>{product.price}$</p>
