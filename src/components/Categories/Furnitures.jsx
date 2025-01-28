@@ -4,7 +4,7 @@ import Footer from '../Footer'
 
 function Furnitures() {
 
-  const {products} = useContext(ProductsContext)
+  const {products, handleProductDetails} = useContext(ProductsContext)
   const filteredItems = products.filter((product)=> product.category === "furniture")
 
   return (
@@ -16,6 +16,7 @@ function Furnitures() {
             <div
             key={item.id}
             className="border-2 border-gray-300 px-4 pb-2 transition-all duration-300 ease-in hover:border-gray-700 hover:cursor-pointer"
+            onClick={() => handleProductDetails(item.id)}
           >
             <img src={item.img} className="w-full object-cover" alt={item.description} />
             <p className="text-lg">{item.description}</p>

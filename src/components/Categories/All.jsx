@@ -3,7 +3,7 @@ import { ProductsContext } from "../../Context/ProductsContex";
 import Footer from "../Footer";
 
 function All() {
-  const { products } = useContext(ProductsContext);
+  const { products, handleProductDetails } = useContext(ProductsContext);
 
   return (
     <div>
@@ -13,6 +13,7 @@ function All() {
             <div
               key={product.id}
               className="   border-2 border-gray-300 px-4 pb-2 transition-all duration-300 ease-in hover:border-gray-700 hover:cursor-pointer"
+              onClick={() => handleProductDetails(product.id)}
             >
               <img
                 src={product.img}

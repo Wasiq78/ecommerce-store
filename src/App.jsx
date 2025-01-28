@@ -10,6 +10,7 @@ import Electronics from "./components/Categories/Electronics";
 import Lamps from "./components/Categories/Lamps";
 import Chairs from "./components/Categories/Chairs";
 import SkinCare from "./components/Categories/SkinCare";
+import Product from "./pages/Product";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />}>
-        <Route index element={<Navigate to="all" replace />} />
+          <Route index element={<Navigate to="all" replace />} />
           <Route path="all" element={<All />} />
           <Route path="kitchen" element={<Kitchen />} />
           <Route path="furnitures" element={<Furnitures />} />
@@ -27,6 +28,7 @@ function App() {
           <Route path="chairs" element={<Chairs />} />
           <Route path="skincare" element={<SkinCare />} />
         </Route>
+        <Route path="/product/:productId" element={<Product/>}/>
       </Routes>
     </>
   );
