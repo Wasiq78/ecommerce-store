@@ -25,8 +25,8 @@ function Navbar() {
             <Link to="/" className="text-lg" onClick={closeMenu}>
               HOME
             </Link>
-            <Link to="/products" className="text-lg" onClick={closeMenu}>
-              PRODUCTS
+            <Link to="/categories" className="text-lg" onClick={closeMenu}>
+            CATEGORIES
             </Link>
           </div>
           <div className="flex items-center">

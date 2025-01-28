@@ -2,7 +2,7 @@ import React from 'react'
 import ProductHeader from '../components/ProductHeader'
 import { Outlet } from 'react-router-dom'
 
-function Products() {
+function Categories() {
   return (
     <>
     <ProductHeader />
@@ -11,4 +11,4 @@ function Products() {
   )
 }
 
-export default Products
+export default Categories

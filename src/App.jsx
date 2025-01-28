@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
-import Products from "./pages/Products";
+import Categories from "./pages/Categories";
 import All from "./components/Categories/All";
 import Kitchen from "./components/Categories/Kitchen";
 import Furnitures from "./components/Categories/Furnitures";
@@ -10,13 +10,15 @@ import Electronics from "./components/Categories/Electronics";
 import Lamps from "./components/Categories/Lamps";
 import Chairs from "./components/Categories/Chairs";
 import SkinCare from "./components/Categories/SkinCare";
+
 function App() {
   return (
     <>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />}>
+        <Route path="/categories" element={<Categories />}>
+        <Route index element={<Navigate to="all" replace />} />
           <Route path="all" element={<All />} />
           <Route path="kitchen" element={<Kitchen />} />
           <Route path="furnitures" element={<Furnitures />} />
