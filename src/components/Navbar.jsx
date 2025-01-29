@@ -11,9 +11,9 @@ function Navbar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <div className="h-24 w-screen fixed top-0 left-0 bg-white shadow-[0px_4px_10px_rgba(0,0,0,0.25)] z-50">
+    <div className="h-16 sm:h-24 w-screen fixed top-0 left-0 bg-white shadow-[0px_4px_10px_rgba(0,0,0,0.25)] z-50">
       <div className="container flex z-10 justify-between items-center h-full px-4">
-        <div className="w-24">
+        <div className="w-16 sm:w-24">
           <img src={logo} alt="Logo" />
         </div>
         <div className="flex items-center gap-12">
