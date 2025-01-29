@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IoMdMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
+import Modal from "react-modal";
+import EmptyCart from "./EmptyCart";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeMenu = () => setIsMenuOpen(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="h-16 sm:h-24 w-screen fixed top-0 left-0 bg-white shadow-[0px_4px_10px_rgba(0,0,0,0.25)] z-50">
@@ -26,13 +31,31 @@ function Navbar() {
               HOME
             </Link>
             <Link to="/categories" className="text-lg" onClick={closeMenu}>
-            CATEGORIES
+              CATEGORIES
             </Link>
           </div>
           <div className="flex items-center">
-            <i className="text-2xl cursor-pointer">
-              <AiOutlineShoppingCart />
-            </i>
+            <div className="relative">
+              <i className="text-2xl cursor-pointer" onClick={openModal}>
+                <AiOutlineShoppingCart />
+              </i>
+              <Modal
+                isOpen={isModalOpen}
+                onRequestClose={closeModal}
+                className="bg-white w-full sm:w-1/2 lg:w-[30rem] h-screen fixed outline-none top-16 sm:top-24 right-0 overflow-y-auto py-9 px-12"
+                overlayClassName="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center"
+              >
+                <div className="flex justify-between items-center">
+                  <h2 className="text-xl font-bold">Your Shopping Cart (0)</h2>
+                  <i className="text-xl font-bold cursor-pointer" onClick={closeModal}>
+                    <RxCross2 />
+                  </i>
+                </div>
+                <div className="mt-16">
+                  <EmptyCart closeModal={closeModal} />
+                </div>
+              </Modal>
+            </div>
           </div>
           <div className="block sm:hidden">
             <i onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-2xl cursor-pointer">
