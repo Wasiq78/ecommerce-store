@@ -5,10 +5,12 @@ import { GoPlus } from "react-icons/go";
 import { HiMiniMinusSmall } from "react-icons/hi2";
 import TrendingSlider from "./TrendingSlider";
 import Footer from "./Footer";
+import { CartContext } from "../Context/CartContext";
 
 function ProductDetails() {
   const { productId } = useParams();
   const { products } = useContext(ProductsContext);
+  const {addToCart} = useContext(CartContext)
 
   const product = products.find(
     (product) => product.id.toString() === productId
@@ -44,6 +46,10 @@ function ProductDetails() {
       return quantity * product.price;
   }
 
+  const handleAddToCart = () => {
+       addToCart(product, quantity)
+  }
+
   return (
     <div className="mt-40">
       <div className="container relative overflow-hidden">
@@ -53,7 +59,7 @@ function ProductDetails() {
         <div className="grid grid-cols-1 lg:grid-cols-[50%,45%] gap-0">
           <div className="flex flex-col gap-8 items-center justify-center w-full mt-10 h-fit mb-12 lg:mb-0">
             <div>
-              <img src={img} className="max-w-[25rem]" />
+              <img src={img} className="max-w-[25rem] pt-12  sm:pt-0" />
             </div>
             <div className="flex gap-4 w-full justify-center">
               <img
@@ -92,7 +98,7 @@ function ProductDetails() {
                 <h3 className="text-2xl font-bold">{calcPrice(quantity)}.00$</h3>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 mt-16 mb-12">
-                <button className="inline-block px-6 py-3 w-full text-lg font-bold text-white bg-[#B6002C] border-2 border-[#B6002C] transition-all delay-200 ease-in hover:bg-transparent hover:text-[#B6002C]">
+                <button className="inline-block px-6 py-3 w-full text-lg font-bold text-white bg-[#B6002C] border-2 border-[#B6002C] transition-all delay-200 ease-in hover:bg-transparent hover:text-[#B6002C]" onClick={handleAddToCart}>
                   ADD TO CART
                 </button>
                 <button className="inline-block px-6 py-3 w-full text-lg font-bold border-2 border-black transition-all delay-200 ease-in hover:bg-black hover:text-white">
