@@ -13,13 +13,13 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, cartCount } = useContext(CartContext);
 
   const closeMenu = () => setIsMenuOpen(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  
 
   return (
     <div className="h-16 sm:h-24 w-screen fixed top-0 left-0 bg-white shadow-[0px_4px_10px_rgba(0,0,0,0.25)] z-50">
@@ -76,7 +76,7 @@ function Navbar() {
                   cartItems.length > 0 ? (
                     <CartWithItems />
                   ) : (
-                    <EmptyCart />
+                    <EmptyCart closeModal={closeModal} />
                   )
                  }
                 </div>
