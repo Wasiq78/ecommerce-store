@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function ProductHeader() {
-  const [btnName, setBtnName] = useState("ALL");
+  const [btnName, setBtnName] = useState("");
 
   return (
     <div className="mt-40">
