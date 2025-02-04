@@ -29,7 +29,7 @@ function Navbar() {
         </div>
         <div className="flex items-center gap-12">
           <div
-            className={`fixed top-24 left-0 w-full h-[calc(100%-6rem)] bg-white flex flex-col items-center justify-center gap-12 z-20 transition-transform duration-300 transform ${
+            className={`fixed top-16 sm:top-24 left-0 w-full h-screen bg-white flex flex-col items-center justify-center gap-12 z-20 transition-transform duration-300 transform ${
               isMenuOpen ? "translate-x-0" : "-translate-x-full"
             } sm:relative sm:top-auto sm:left-auto sm:w-auto sm:h-auto sm:bg-transparent sm:flex-row sm:transform-none sm:gap-8`}
           >
