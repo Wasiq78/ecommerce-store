@@ -5,7 +5,7 @@ import Header3 from "../img/header/home-img-3.jpg";
 import Header4 from "../img/header/home-img-4.jpg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { fadeLeft, fadeDown, fadeRgiht, fadeUp } from "../Variants/Variants";
+import { fadeLeft, fadeDown, fadeRight, fadeUp } from "../Variants/Variants";
 
 const MotionLink = motion(Link);
 
@@ -40,7 +40,7 @@ function Hero() {
           </h3>
         </MotionLink>
         <MotionLink
-          variants={fadeRgiht}
+          variants={fadeRight}
           initial="hidden"
           animate="visible"
           to="/categories/kitchen"

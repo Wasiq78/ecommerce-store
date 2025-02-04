@@ -16,6 +16,7 @@ body {
   line-height: 1.7;
   color: theme('colors.textColor');
   position: relative;
+  overflow-x: hidden;
 }
 
 

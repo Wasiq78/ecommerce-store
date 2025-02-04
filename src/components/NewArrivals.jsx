@@ -1,13 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { ProductsContext } from "../Context/ProductsContex";
-import { useNavigate } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
+import { scrollVariant } from "../Variants/Variants";
 
 function NewArrivals() {
   const { products, handleProductDetails } = useContext(ProductsContext);
   const newProducts = products.filter((product) => product.id <= 8);
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
-    <div className="mt-16">
+    <motion.div
+      ref={ref}
+      variants={scrollVariant}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className="mt-16"
+    >
       <div className="container">
         <div>
           <h2 className="text-3xl font-bold">New Arrivals</h2>
@@ -26,7 +36,7 @@ function NewArrivals() {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

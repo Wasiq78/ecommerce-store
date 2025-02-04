@@ -31,7 +31,7 @@ function CartItem() {
           <div>
             <img src={item.img} className="w-48"/>
           </div>
-          <div className="flex justify-between w-full px-2 h-full" >
+          <div className="flex justify-between gap-4 w-full px-2 h-full" >
             <div className="flex flex-col pl-4 gap-4 sm:pl-0">
               <h3 className="text-lg font-bold">{item.description}</h3>
               <div className="flex items-center">

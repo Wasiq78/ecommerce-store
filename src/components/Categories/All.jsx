@@ -1,12 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { ProductsContext } from "../../Context/ProductsContex";
 import Footer from "../Footer";
+import { motion, useInView } from "framer-motion";
+import { scrollVariant } from "../../Variants/Variants";
 
 function All() {
   const { products, handleProductDetails } = useContext(ProductsContext);
 
+   const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
   return (
-    <div>
+    <motion.div    ref={ref}
+          variants={scrollVariant}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}>
       <div className="my-16">
         <div className="container grid sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 gap-4">
           {products.map((product) => (
@@ -27,7 +35,7 @@ function All() {
         </div>
       </div>
       <Footer />
-    </div>
+    </motion.div>
   );
 }
 

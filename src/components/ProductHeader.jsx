@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
+import { motion } from "framer-motion";
+import { animateProductHeader } from "../Variants/Variants";
 
 function ProductHeader() {
   const [btnName, setBtnName] = useState("");
 
   return (
-    <div className="mt-40">
+    <motion.div  variants={animateProductHeader}
+          initial="hidden"
+          animate="visible" className="mt-40">
       <div className="flex container flex-col gap-10 justify-center  items-center">
         <h3 className="text-3xl font-bold">{btnName}</h3>
         <div className="flex gap-6 flex-wrap justify-center">
@@ -60,7 +64,7 @@ function ProductHeader() {
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

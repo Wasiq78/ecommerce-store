@@ -1,7 +1,10 @@
 import React from "react";
+import { useRef } from "react";
 import TrendingItem from "./TrendingItem";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { motion, useInView } from "framer-motion";
+import { scrollVariant } from "../Variants/Variants";
 
 function TrendingSlider() {
   const scrollLeft = () => {
@@ -14,8 +17,17 @@ function TrendingSlider() {
     slider.scrollLeft += 235;
   };
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
-    <div className="mt-16">
+    <motion.div
+      ref={ref}
+      variants={scrollVariant}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className="mt-16"
+    >
       <div className="container">
         <div className=" mb-8 flex justify-between items-center">
           <h2 className="font-bold text-3xl">Trending Now</h2>
@@ -42,7 +54,7 @@ function TrendingSlider() {
           <TrendingItem />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

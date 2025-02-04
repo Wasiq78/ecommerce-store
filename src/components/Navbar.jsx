@@ -8,6 +8,8 @@ import Modal from "react-modal";
 import EmptyCart from "./EmptyCart";
 import CartWithItems from "./CartWithItems";
 import { CartContext } from "../Context/CartContext";
+import { motion, AnimatePresence } from "framer-motion";
+import { cartAnimation } from "../Variants/Variants";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,8 +20,6 @@ function Navbar() {
   const closeMenu = () => setIsMenuOpen(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
-  
 
   return (
     <div className="h-16 sm:h-24 w-screen fixed top-0 left-0 bg-white shadow-[0px_4px_10px_rgba(0,0,0,0.25)] z-50">
@@ -46,41 +46,49 @@ function Navbar() {
                 <i className="text-2xl cursor-pointer" onClick={openModal}>
                   <AiOutlineShoppingCart />
                 </i>
-                {
-                  cartCount > 0  && (
-                    <span className="absolute right-[-7px] top-[-12px] bg-[#B6002C] text-white px-2 py-1 text-sm rounded-full w-4 h-4 flex items-center justify-center">
+                {cartCount > 0 && (
+                  <span className="absolute right-[-7px] top-[-12px] bg-[#B6002C] text-white px-2 py-1 text-sm rounded-full w-4 h-4 flex items-center justify-center">
                     {cartCount}
                   </span>
-                  
-                  )
-                }
+                )}
               </div>
 
-              <Modal
-                isOpen={isModalOpen}
-                onRequestClose={closeModal}
-                className="bg-white w-full sm:w-2/3 lg:w-[30rem] min-h-screen h-full fixed outline-none top-16 sm:top-24 right-0 overflow-y-auto py-9 px-12"
-                overlayClassName="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center"
-              >
-                <div className="flex justify-between items-center">
-                  <h2 className="text-xl font-bold">Your Shopping Cart <span>({cartCount})</span></h2>
-                  <i
-                    className="text-xl font-bold cursor-pointer"
-                    onClick={closeModal}
+              <AnimatePresence>
+                {isModalOpen && (
+                  <Modal
+                    isOpen={isModalOpen}
+                    onRequestClose={closeModal}
+                    className="bg-white w-full sm:w-2/3 lg:w-[30rem] min-h-screen h-full fixed outline-none top-16 sm:top-24 right-0 overflow-y-auto py-9 px-12"
+                    overlayClassName="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center"
                   >
-                    <RxCross2 />
-                  </i>
-                </div>
-                <div className="mt-16">
-                 {
-                  cartItems.length > 0 ? (
-                    <CartWithItems />
-                  ) : (
-                    <EmptyCart closeModal={closeModal} />
-                  )
-                 }
-                </div>
-              </Modal>
+                    <motion.div
+                      variants={cartAnimation}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      <div className="flex justify-between items-center">
+                        <h2 className="text-xl font-bold">
+                          Your Shopping Cart <span>({cartCount})</span>
+                        </h2>
+                        <i
+                          className="text-xl font-bold cursor-pointer"
+                          onClick={closeModal}
+                        >
+                          <RxCross2 />
+                        </i>
+                      </div>
+                      <div className="mt-16">
+                        {cartItems.length > 0 ? (
+                          <CartWithItems />
+                        ) : (
+                          <EmptyCart closeModal={closeModal} />
+                        )}
+                      </div>
+                    </motion.div>
+                  </Modal>
+                )}
+              </AnimatePresence>
             </div>
           </div>
           <div className="block sm:hidden">

@@ -13,8 +13,8 @@ function CartWithItems() {
     <div className='flex flex-col gap-4'>
           <CartItem />
     </div>
-    <div className='mt-12 flex justify-between items-center mb-20'>
-        <div>
+    <div className='mt-12 flex justify-between items-center mb-20 pt-8 border-t-4 border-dashed border-textColor'>
+        <div className=''>
             <h2 className='text-xl font-bold'>Subtotal</h2>
             <h2 className='text-xl font-bold'>${subtotal.toFixed(2)}</h2>
         </div>

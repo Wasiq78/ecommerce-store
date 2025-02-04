@@ -29,18 +29,18 @@ export const fadeDown = {
     visible: {
         y: 0,
         transition : {
-            duratio: 2,
+            duration: 0.5,
             ease: easeIn,
         }
     }
 }
 
-export const fadeRgiht = {
+export const fadeRight = {
     hidden: {x:100},
     visible: {
         x: 0,
         transition : {
-            duratio: 1.5,
+            duration: 0.5,
             ease: easeIn,
         }
     }
@@ -51,8 +51,69 @@ export const fadeUp= {
     visible: {
         y: 0,
         transition : {
-            duratio: 0.5,
+            duration: 0.5,
             ease: easeIn,
         }
     }
+}
+
+export const animateProductHeader = {
+  hidden: {x:600},
+  visible: {
+      x: 0,
+      transition : {
+          duration: 0.5,
+          ease: easeIn,
+      }
+  }
+}
+
+export const animateProductTitle = {
+  hidden: {y:-400},
+  visible: {
+      y: 0,
+      transition : {
+          duration: 0.7,
+          ease: easeIn,
+      }
+  }
+}
+
+export const animateProductImg = {
+  hidden: {x:-400},
+  visible: {
+      x: 0,
+      transition : {
+          duration: 0.7,
+          ease: easeIn,
+      }
+  }
+}
+
+export const animateProductDetails = {
+  hidden: {x:400},
+  visible: {
+      x: 0,
+      transition : {
+          duration: 0.5,
+          ease: easeIn,
+      }
+  }
+}
+
+export const cartAnimation = {
+  hidden: { x: 100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    x: 100,
+    opacity: 0,
+    transition: { duration: 0.3, ease: "easeInOut" },
+  },
 }
