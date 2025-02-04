@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { ProductsContext } from "../../Context/ProductsContex";
-import Footer from "../Footer";
+
 import { motion, useInView } from "framer-motion";
 import { scrollVariant } from "../../Variants/Variants";
 
@@ -34,7 +34,6 @@ function All() {
           ))}
         </div>
       </div>
-      <Footer />
     </motion.div>
   );
 }

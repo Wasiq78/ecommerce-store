@@ -1,20 +1,23 @@
-import React from 'react'
+import React from 'react';
 import { useEffect } from 'react';
-import ProductHeader from '../components/ProductHeader'
-import { Outlet } from 'react-router-dom'
+import ProductHeader from '../components/ProductHeader';
+import { Outlet } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 function Categories() {
-
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" }); 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
-  
+
   return (
-    <>
-    <ProductHeader />
-    <Outlet/>
-    </>
-  )
+    <div className="min-h-screen flex flex-col">
+      <ProductHeader />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
-export default Categories
+export default Categories;
