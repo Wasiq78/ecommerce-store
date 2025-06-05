@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import SignUp from "./pages/SignUp/SignUp";
+import Login from "./pages/Login/Login";
 import Home from "./pages/Home";
 import Categories from "./pages/Categories";
 import All from "./components/Categories/All";
@@ -13,11 +15,18 @@ import SkinCare from "./components/Categories/SkinCare";
 import Product from "./pages/Product";
 
 function App() {
+  const location = useLocation();
+
+  // Check if current path is "/"
+  const showNavbar = location.pathname !== "/" && location.pathname !== "/login";
+
   return (
     <>
-      <Navbar />
+      {showNavbar && <Navbar />}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/categories" element={<Categories />}>
           <Route index element={<Navigate to="all" replace />} />
           <Route path="all" element={<All />} />
@@ -28,7 +37,7 @@ function App() {
           <Route path="chairs" element={<Chairs />} />
           <Route path="skincare" element={<SkinCare />} />
         </Route>
-        <Route path="/product/:productId" element={<Product/>}/>
+        <Route path="/product/:productId" element={<Product />} />
       </Routes>
     </>
   );

@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
