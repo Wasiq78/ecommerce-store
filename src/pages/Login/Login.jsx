@@ -51,18 +51,12 @@ function Login() {
     },
     validationSchema: LoginSchema,
     onSubmit: async (values) => {
-      console.log("Form submitted with values:", values);
       try {
         const response = await axiosInstance.post("/login", values, {
           headers: { "Content-Type": "application/json" },
         });
         if (response?.status === 200) {
           Cookies.set("access", response?.data?.token);
-          console.log("Login response:", response.data);
-console.log("Token:", response?.data?.token);
-console.log("User:", response?.data?.user);
-console.log("setAuthState:", setAuthState);
-console.log("setUserState:", setUserState);
           setAuthState({
             isAuthenticated: true,
             role: response?.data?.user?.userRole,
@@ -73,7 +67,7 @@ console.log("setUserState:", setUserState);
             userId: response?.data?.user?.userId,
             role: response?.data?.user?.userRole,
           });
-            console.log("Auth and user state updated");
+          console.log("User Role:", response.data.user.userRole);
           setSnackBarProps({
             variant: "soft",
             color: "success",
@@ -82,7 +76,8 @@ console.log("setUserState:", setUserState);
           setSnackBarOpen(true);
           setTimeout(() => {
             setSnackBarOpen(false);
-            navigate("/home");
+  navigate(`/${response.data.user.userRole}/home`);
+
           }, 1000);
         }
       } catch (error) {

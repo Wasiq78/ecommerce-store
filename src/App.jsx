@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import AllRoutes from "./Routes/AppRoutes";
 import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home";
@@ -24,20 +25,21 @@ function App() {
     <>
       {showNavbar && <Navbar />}
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/" element={<Login />} />
-        <Route path="/categories" element={<Categories />}>
-          <Route index element={<Navigate to="all" replace />} />
-          <Route path="all" element={<All />} />
-          <Route path="kitchen" element={<Kitchen />} />
-          <Route path="furnitures" element={<Furnitures />} />
-          <Route path="electronics" element={<Electronics />} />
-          <Route path="lamps" element={<Lamps />} />
-          <Route path="chairs" element={<Chairs />} />
-          <Route path="skincare" element={<SkinCare />} />
-        </Route>
-        <Route path="/product/:productId" element={<Product />} />
+         {AllRoutes.map((route, index) => (
+          <Route key={index} path={route.path} element={route.element}>
+            {route.children?.map((child, childIndex) => (
+              <Route key={childIndex} path={child.path} element={child.element}>
+                {child.children?.map((subChild, subChildIndex) => (
+                  <Route
+                    key={subChildIndex}
+                    path={subChild.path}
+                    element={subChild.element}
+                  />
+                ))}
+              </Route>
+            ))}
+          </Route>
+        ))}
       </Routes>
     </>
   );
