@@ -49,7 +49,7 @@ const SignUp = () => {
       try {
         const { confirmPassword, ...payload } = values;
 
-        const response = await axiosInstance.post("/SignUp/signup", payload, {
+        const response = await axiosInstance.post("/signup", payload, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -67,7 +67,7 @@ const SignUp = () => {
           // ✅ Navigate to login after delay
           setTimeout(() => {
             setSnackBarOpen(false);
-            navigate("/login");
+            navigate("/");
           }, 2000);
         }
       } catch (error) {
@@ -193,7 +193,7 @@ const SignUp = () => {
 
           <p className="text-sm">
             Already have an account?{" "}
-            <Link to="/login" className="hover:underline">
+            <Link to="/" className="hover:underline">
               Log in
             </Link>
           </p>

@@ -18,15 +18,15 @@ function App() {
   const location = useLocation();
 
   // Check if current path is "/"
-  const showNavbar = location.pathname !== "/" && location.pathname !== "/login";
+  const showNavbar = location.pathname !== "/" && location.pathname !== "/signup";
 
   return (
     <>
       {showNavbar && <Navbar />}
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/" element={<Login />} />
         <Route path="/categories" element={<Categories />}>
           <Route index element={<Navigate to="all" replace />} />
           <Route path="all" element={<All />} />
