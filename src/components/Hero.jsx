@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
 import Header1 from "../img/header/home-img-1.jpg";
 import Header2 from "../img/header/home-img-2.jpg";
 import Header3 from "../img/header/home-img-3.jpg";
@@ -10,6 +11,8 @@ import { fadeLeft, fadeDown, fadeRight, fadeUp } from "../Variants/Variants";
 const MotionLink = motion(Link);
 
 function Hero() {
+  const {authState} = useContext(AuthContext);
+  const userRole = authState.role;
   return (
     <div className="mt-32">
       <div className="grid grid-cols-2 grid-rows-none  md:grid-cols-4 md:grid-rows-2 gap-4 h-[40rem] container mx-auto">
@@ -17,7 +20,7 @@ function Hero() {
           variants={fadeLeft}
           initial="hidden"
           animate="visible"
-          to="/categories/furnitures"
+          to={`/${userRole}/categories/furnitures`}
           className="col-span-1 row-span-1 md:col-span-2 md:row-span-2 relative cursor-pointer overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.3)]"></div>
@@ -30,7 +33,7 @@ function Hero() {
           variants={fadeDown}
           initial="hidden"
           animate="visible"
-          to="/categories/skincare"
+          to={`/${userRole}/categories/skin-care`}
           className="col-span-1 row-span-1 md:row-span-2 relative cursor-pointer overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.3)]"></div>
@@ -43,7 +46,7 @@ function Hero() {
           variants={fadeRight}
           initial="hidden"
           animate="visible"
-          to="/categories/kitchen"
+          to={`/${userRole}/categories/kitchen`}
           className="col-span-1 row-span-1 relative cursor-pointer overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.3)]"></div>
@@ -56,7 +59,7 @@ function Hero() {
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          to="/categories/electronics"
+          to={`/${userRole}/categories/electronics`}
           className="col-span-1 row-span-1 relative cursor-pointer overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.3)]"></div>

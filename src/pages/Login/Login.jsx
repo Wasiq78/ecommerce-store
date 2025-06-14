@@ -67,7 +67,6 @@ function Login() {
             userId: response?.data?.user?.userId,
             role: response?.data?.user?.userRole,
           });
-          console.log("User Role:", response.data.user.userRole);
           setSnackBarProps({
             variant: "soft",
             color: "success",

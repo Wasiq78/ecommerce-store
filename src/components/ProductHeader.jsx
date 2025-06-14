@@ -56,7 +56,7 @@ function ProductHeader() {
             Chairs
           </Link>
           <Link
-            to="skincare"
+            to="skin-care"
             onClick={() => setBtnName("SKIN CARE")}
             className="outline outlinne-2 outline-gray-400 px-4 text-lg whitespace-nowrap transition-all delay-300 ease-in hover:outline-gray-600"
           >

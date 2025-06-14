@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState} from "react";
 import logo from "../img/newlogo2.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IoMdMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
@@ -10,10 +10,14 @@ import CartWithItems from "./CartWithItems";
 import { CartContext } from "../Context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { cartAnimation } from "../Variants/Variants";
+import { AuthContext } from "../Context/AuthContext";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const {authState} = useContext(AuthContext);
+  const userRole = authState.role;
+  const navigate = useNavigate();
 
   const { cartItems, cartCount } = useContext(CartContext);
 
@@ -33,10 +37,10 @@ function Navbar() {
               isMenuOpen ? "translate-x-0" : "-translate-x-full"
             } sm:relative sm:top-auto sm:left-auto sm:w-auto sm:h-auto sm:bg-transparent sm:flex-row sm:transform-none sm:gap-8`}
           >
-            <Link to="/" className="text-lg" onClick={closeMenu}>
+            <Link   to={`/${userRole}/home`} className="text-lg" onClick={closeMenu}>
               HOME
             </Link>
-            <Link to="/categories" className="text-lg" onClick={closeMenu}>
+            <Link to={`/${userRole}/categories`} className="text-lg" onClick={closeMenu}>
               CATEGORIES
             </Link>
           </div>
