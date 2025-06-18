@@ -13,10 +13,12 @@ import Furnitures from "../components/Categories/Furnitures";
 import Kitchen from "../components/Categories/Kitchen";
 import Lamps from "../components/Categories/Lamps";
 import SkinCare from "../components/Categories/SkinCare";
+import ProductsTable from "../pages/Admin/Tables/ProductsTable";
+import OrdersTable from "../pages/Admin/Tables/OrdersTables"
 
 export const PublicRoutes = [
   {
-    path: "/singup",
+    path: "/signup",
     element: <SignUp />,
   },
   {
@@ -33,6 +35,16 @@ const AdminRoutes = [
       {
         path: "home",
         element: <AdminHome />,
+        children: [
+          {
+            path: "products",
+            element: <ProductsTable />,
+          },
+          {
+            path: "orders",
+            element: <OrdersTable />,
+          },
+        ],
       },
     ],
   },
@@ -41,7 +53,7 @@ const AdminRoutes = [
 const UserRoutes = [
   {
     path: "/user",
-    element: <ProtectedRoutes allowedRoles={["user", "User"]} />,
+    element: <ProtectedRoutes allowedRoles={["user"]} />,
     children: [
       {
         path: "home",
